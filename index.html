@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleTyping</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/typing.css">
+    <link rel="stylesheet" href="css/results.css">
+</head>
+<body>
+    <div class="stars-container" id="stars-container"></div>
+    <div class="container">
+        <header>
+            <div class="logo">SimpleTyping</div>
+        </header>
+
+        <div class="test-options">
+            <div class="option-group" id="time-group">
+                <h3 data-option="time">Time</h3>
+                <div class="button-group">
+                    <button type="button" class="option-button time-option" data-time="15">15s</button>
+                    <button type="button" class="option-button time-option" data-time="30">30s</button>
+                    <button type="button" class="option-button time-option" data-time="60">60s</button>
+                    <button type="button" class="option-button time-option" data-time="120">120s</button>
+                </div>
+            </div>
+
+            <div class="option-group" id="words-group">
+                <h3 data-option="words">Words</h3>
+                <div class="button-group">
+                    <button type="button" class="option-button words-option" data-words="10">10</button>
+                    <button type="button" class="option-button words-option" data-words="25">25</button>
+                    <button type="button" class="option-button words-option" data-words="50">50</button>
+                    <button type="button" class="option-button words-option" data-words="100">100</button>
+                </div>
+            </div>
+
+            <div class="option-group" id="quote-group">
+                <h3 data-option="quote">Quote</h3>
+                <div class="button-group">
+                    <button type="button" class="option-button quote-option" data-quote-length="short">Short</button>
+                    <button type="button" class="option-button quote-option" data-quote-length="medium">Medium</button>
+                    <button type="button" class="option-button quote-option" data-quote-length="long">Long</button>
+                </div>
+            </div>
+
+            <div class="option-group" id="custom-group">
+                <h3 data-option="custom">Custom</h3>
+                <div class="button-group">
+                    <button type="button" class="option-button" id="show-custom-text-button">Custom Text</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="options-container" id="text-options">
+            <div class="option-checkbox">
+                <input type="checkbox" id="numbers-toggle">
+                <label for="numbers-toggle">Numbers</label>
+            </div>
+            <div class="option-checkbox">
+                <input type="checkbox" id="punctuation-toggle">
+                <label for="punctuation-toggle">Punctuation</label>
+            </div>
+            <div class="option-checkbox">
+                <input type="checkbox" id="capitals-toggle">
+                <label for="capitals-toggle">Capitals</label>
+            </div>
+        </div>
+
+        <div class="custom-text-container" id="custom-text-container">
+            <h3>Custom Text</h3>
+            <label for="custom-text-input" class="sr-only">Enter your custom text here</label>
+            <textarea id="custom-text-input" class="custom-text-input" placeholder="Enter your custom text here..."></textarea>
+            <button type="button" class="option-button" id="custom-text-button">Start Test</button>
+        </div>
+
+        <div class="typing-area" id="typing-area">
+            <div class="typing-stats">
+                <div class="stat">
+                    <div class="stat-label">WPM</div>
+                    <div class="stat-value" id="wpm-counter">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">ACC</div>
+                    <div class="stat-value" id="accuracy-counter">—</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">TIME</div>
+                    <div class="stat-value" id="time-counter">0s</div>
+                </div>
+            </div>
+            <div class="text-display" id="text-display">
+                <div class="placeholder">Click on a test mode above to start typing.</div>
+            </div>
+            <div class="typing-input-container">
+                <label for="typing-input" class="sr-only">Type here</label>
+                <input type="text" id="typing-input" class="typing-input" autocomplete="off" autocorrect="off" spellcheck="false" placeholder="Type here">
+            </div>
+        </div>
+
+        <div class="results" id="results">
+            <div class="results-container">
+                <div class="results-header">
+                    <h2 class="results-title">Test Results</h2>
+                    <div class="results-actions">
+                        <button type="button" class="option-button" id="restart-button">Restart Test</button>
+                    </div>
+                </div>
+                <div class="results-main">
+                    <div class="result-card">
+                        <div class="result-value" id="result-wpm">0</div>
+                        <div class="result-label">WPM</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-value" id="result-accuracy">0%</div>
+                        <div class="result-label">Accuracy</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-value" id="result-time">0s</div>
+                        <div class="result-label">Time</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-value" id="result-characters">0</div>
+                        <div class="result-label">Characters</div>
+                    </div>
+                </div>
+                <div class="results-details">
+                    <h3 class="results-section-title">Details</h3>
+                    <p id="result-details-text"></p>
+                </div>
+                <div class="results-problem-letters">
+                    <h3 class="results-section-title">Problem Letters</h3>
+                    <div class="problem-letters-container" id="problem-letters-container"></div>
+                </div>
+                <div class="results-practice">
+                    <h3 class="results-section-title">Practice</h3>
+                    <p>Want to improve your typing? Practice with a new test focusing on your problem areas.</p>
+                    <button type="button" id="start-practice-button">Start Practice Test</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/simpletyping.js"></script>
+</body>
+</html>
